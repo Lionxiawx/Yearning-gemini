@@ -112,9 +112,9 @@ export default class platform_audit extends Mixins(Basic) {
             sortable: true
         },
         {
-            title: '定时执行',
-            key: 'delay',
-            slot: 'delay'
+            title: '数据源',
+            key: 'source',
+            sortable: true
         },
         {
             title: '当前操作人',
