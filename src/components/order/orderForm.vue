@@ -17,16 +17,26 @@
                     <FormItem label="连接名:" prop="source">
                         <Select v-model="formItem.source" @on-change="fetchBase" filterable>
                             <Option
-                                v-for="i in fetchData.source"
-                                :value="i"
-                                :key="i"
-                                :label="i"
+                                    v-for="i in fetchData.source"
+                                    :value="i"
+                                    :key="i"
+                                    :label="i"
                             ></Option>
                         </Select>
                     </FormItem>
                     <FormItem label="库名:" prop="data_base">
                         <Select v-model="formItem.data_base" placeholder="请选择" filterable>
                             <Option v-for="item in fetchData.base" :value="item" :key="item" :label="item"></Option>
+                        </Select>
+                    </FormItem>
+                    <FormItem label="上线:" prop="is_pub" required>
+                        <Select v-model="formItem.is_pub"  >
+                            <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
+                        </Select>
+                    </FormItem>
+                    <FormItem label="删除:" prop="is_del" required>
+                        <Select v-model="formItem.is_del" >
+                            <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
                     <FormItem label="工单说明:" prop="text">
@@ -52,9 +62,9 @@
                     </FormItem>
                     <FormItem>
                         <Button
-                            type="error"
-                            icon="md-trash"
-                            @click.native="clearForm()"
+                                type="error"
+                                icon="md-trash"
+                                @click.native="clearForm()"
                         >重置
                         </Button>
                         <Button type="primary" icon="md-arrow-round-forward" @click.native="nextStep()"
@@ -69,52 +79,55 @@
 </template>
 
 <script lang="ts">
-import {Mixins, Component} from "vue-property-decorator";
-import fetch_mixin from "@/mixins/fetch";
-import modules_order from "@/store/modules/order";
+    import {Mixins, Component} from "vue-property-decorator";
+    import fetch_mixin from "@/mixins/fetch";
+    import modules_order from "@/store/modules/order";
 
 
-@Component({})
-export default class order_form extends Mixins(fetch_mixin) {
+    @Component({})
+    export default class order_form extends Mixins(fetch_mixin) {
 
-    jwt = sessionStorage.getItem('jwt')
+        jwt = sessionStorage.getItem('jwt')
 
-    clearForm() {
-        modules_order.clear_order()
+        clearForm() {
+            console.log("clear");
+            modules_order.clear_order()
+        }
+
+        nextStep() {
+            let is_validate: any = this.$refs['formItem'];
+            is_validate.validate((valid: boolean) => {
+                if (valid) {
+                    modules_order.beforeAdd(modules_order.order.is_pub==0?"非上线":"上线");
+                    modules_order.beforeAdd(modules_order.order.is_del==0?"非删除":"删除");
+                    modules_order.changed_always({one: false, two: true, three: false})
+                    modules_order.changed_step(1)
+                } else {
+                    this.$Message.warning("请填写必选项信息!")
+                }
+            })
+        }
+
+        changedTp(vl: number) {
+            modules_order.changed_is_dml(vl === 1)
+        }
+
+        mounted() {
+            modules_order.clear_order()
+            this.fetchIDC();
+        }
     }
-
-    nextStep() {
-        let is_validate: any = this.$refs['formItem'];
-        is_validate.validate((valid: boolean) => {
-            if (valid) {
-                modules_order.changed_always({one: false, two: true, three: false})
-                modules_order.changed_step(1)
-            } else {
-                this.$Message.warning("请填写必选项信息!")
-            }
-        })
-    }
-
-    changedTp(vl: number) {
-        modules_order.changed_is_dml(vl === 1)
-    }
-
-    mounted() {
-        modules_order.clear_order()
-        this.fetchIDC();
-    }
-}
 </script>
 
 <style lang="less" scoped>
-.div-a {
-    position: absolute;
-    z-index: 1000;
-    width: 100%;
-}
+    .div-a {
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+    }
 
-#fontsize .ivu-form-item-label {
-    font-size: 13px;
-    font-weight: bold;
-}
+    #fontsize .ivu-form-item-label {
+        font-size: 13px;
+        font-weight: bold;
+    }
 </style>>

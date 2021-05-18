@@ -21,6 +21,7 @@ class order_local extends VuexModule {
     sql_order: order = {
         export: 0,
     }
+    yes_no = [{label:"是",value:1},{label:"否",value:0}]
     order: order = {
         tp: 0,
         idc: '',
@@ -32,7 +33,9 @@ class order_local extends VuexModule {
         assigned: '',
         backup: 1,
         export: 0,
-        uuid: ''
+        uuid: '',
+        is_pub: 0,
+        is_del: 0
     }
     always: object = {
         one: true,
@@ -107,9 +110,14 @@ class order_local extends VuexModule {
         this.is_dml = vm
     }
 
+
     @Mutation
     save_sql(sql: string) {
         this.sql = sql
+    }
+    @Mutation
+    beforeAdd(text: string){
+        this.order.text = text +" " + this.order.text;
     }
 }
 

@@ -12,7 +12,8 @@ module.exports = {
     runtimeCompiler: true,
     productionSourceMap: false,
     devServer: {
-        proxy: 'http://localhost:8000'
+        open: 'Google Chrome',
+        proxy: 'http://127.0.0.1:8000'
     },
     configureWebpack: (config)=>{
         if(process.env.NODE_ENV === 'production'){

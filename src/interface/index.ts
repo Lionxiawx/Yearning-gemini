@@ -21,7 +21,10 @@ interface order {
     current_step?: number
     uuid?: string
     relevant?: string[]
-    sql?: string;
+    sql?: string
+    is_pub?:number
+    is_del?:number;
+
 }
 
 interface other_modal {

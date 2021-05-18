@@ -25,7 +25,13 @@ export default class Basic extends Vue {
     }
 
     get formItem() {
+        modules_order.order.is_pub = 0;
+        modules_order.order.is_del = 0;
         return modules_order.order
+    }
+
+    get yesNo() {
+        return modules_order.yes_no
     }
 
     get wordList() {
@@ -103,7 +109,7 @@ export default class Basic extends Vue {
                 trigger: 'change'
             }
         ],
-        backup: {required: true, type: 'number', message: '备份不得为空', trigger: 'change'}
+        backup: {required: true, type: 'number', message: '备份不得为空', trigger: 'change'},
     };
 
     find = {
@@ -133,7 +139,7 @@ export default class Basic extends Vue {
         name: '',
         data_base: '',
         table: '',
-        affect_rows: 0
+        affect_rows: 0,
     }
 
     is_open = false;
