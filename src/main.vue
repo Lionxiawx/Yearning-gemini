@@ -17,10 +17,6 @@
                 </div>
                 <div class="header-avator-con">
                     <Dropdown trigger="click" @on-click="handleClickUserDropdown">
-                        <a href="javascript:void(0)">
-                            获得赞助版本/帮助
-                            <Icon type="ios-arrow-down"></Icon>
-                        </a>
                         <DropdownMenu slot="list">
                             <DropdownItem name="sponsor">获取赞助版</DropdownItem>
                             <DropdownItem><a href="https://guide.yearning.io/"

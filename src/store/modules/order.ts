@@ -22,6 +22,7 @@ class order_local extends VuexModule {
         export: 0,
     }
     yes_no = [{label:"是",value:1},{label:"否",value:0}]
+    bug_type = [{label:"遗漏脚本",value:1},{label:"程序错误造成脏数据",value:2}]
     order: order = {
         tp: 0,
         idc: '',

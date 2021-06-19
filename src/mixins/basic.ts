@@ -33,6 +33,9 @@ export default class Basic extends Vue {
     get yesNo() {
         return modules_order.yes_no
     }
+    get bugType() {
+        return modules_order.bug_type
+    }
 
     get wordList() {
         return modules_order.wordList

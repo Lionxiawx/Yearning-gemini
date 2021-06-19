@@ -23,7 +23,9 @@ interface order {
     relevant?: string[]
     sql?: string
     is_pub?:number
-    is_del?:number;
+    is_del?:number
+    bug_type?:number
+    ;
 
 }
 

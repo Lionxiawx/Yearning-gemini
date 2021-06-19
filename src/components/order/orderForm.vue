@@ -39,6 +39,11 @@
                             <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
+                    <FormItem label="bug类型:" prop="bug_type" >
+                        <Select v-model="formItem.bug_type" >
+                            <Option v-for="item in bugType" :value="item.value" :key="item.value" :label="item.label"></Option>
+                        </Select>
+                    </FormItem>
                     <FormItem label="工单说明:" prop="text">
                         <Input v-model="formItem.text" placeholder="请输入" type="textarea" :rows=4 maxlength="100"
                                show-word-limit></Input>
