@@ -55,33 +55,25 @@
         <div class="header">
             <Row type="flex" justify="start" align="middle">
                 <Col span="1">
-                    <a href="https://github.com/cookieY/Yearning" target="_blank">
-                        <Icon type="logo-github" size="30"/>
-                    </a>
-                </Col>
-                <Col span="2"><a class="navbar-brand"> {{ $t('version') }}: {{ $config.version }} </a></Col>
-                <Col span="1">
                     <Button v-if="switchCode" type="default" ghost @click="register = true" size="small"
                             style="z-index: 9999">
                         {{ $t('sign') }}
                     </Button
                     >
                 </Col>
-                <Col span="1">
-                    <Button type="default" @click="sponsorship = true" ghost size="small">
-                        {{ $t('sponsor') }}
-                    </Button>
-                </Col>
             </Row>
         </div>
         <div style="z-index: 100" class="div-a">
             <Row type="flex">
                 <Col span="3" offset="2">
-                    <div style="margin:180px 0 0 ;;width: 300px;">
+                    <div style="margin:180px 560px 0 ;;width: 300px;">
                         <Form label-position="right">
                             <FormItem>
-                                <img src="../../assets/logo.png" width="300px">
+                                <img src="../../assets/wyytlogo.png" width="80px" align="center">
                             </FormItem>
+                            <form-item>
+                                <span style="font-size: 50px;color: #2b85e4">数据管理平台</span>
+                            </form-item>
                             <FormItem>
                                 <Input style="opacity: 0.6" :placeholder="$t('account')"
                                        v-model="formInline.user"></Input>
@@ -105,30 +97,6 @@
         </div>
         <div class="footer">
             <Row type="flex" justify="start" align="bottom" style="z-index: 999">
-                <Col span="2">
-                    <Tooltip content="yearning.io" placement="top-start">
-                        <a href="https://yearning.io" style="color: #FFFFFF">
-                            {{ $t('about') }}
-                        </a>
-                    </Tooltip>
-                </Col>
-                <Col span="2">
-                    <Tooltip :content="$t('community_addr')" placement="top-start">
-                                    <span style="color: #FFFFFF">
-                                        {{ $t('community') }}
-                                    </span>
-                    </Tooltip>
-                </Col>
-                <Col span="2">
-                    <a
-                            href="https://www.gnu.org/licenses/agpl-3.0.en.html" style="color: #FFFFFF"
-                    >
-                        {{ $t('license') }}
-                    </a>
-                </Col>
-                <Col span="18">
-                    <div style="color: #FFFFFF">{{ $t('tips') }}</div>
-                </Col>
             </Row>
         </div>
         <div class="homepage-hero-module">
@@ -136,9 +104,8 @@
                 <div :style="fixStyle" class="filter">
 
                 </div>
-                <video :style="fixStyle" autoplay loop class="fillWidth" v-on:canplay="canplay" muted>
-                    <source src="../../assets/groud.mp4" type="video/mp4"/>
-                </video>
+                <img :style="fixStyle" src="../../assets/background.png" autoplay loop class="fillWidth" v-on:canplay="canplay" muted>
+                </img>
             </div>
         </div>
 
@@ -176,24 +143,7 @@
             </Form>
         </Modal>
 
-        <Modal v-model="sponsorship" :title="$t('sponsor_title')" width="640">
-            <h3>{{ $t('sponsor_1') }}</h3>
-            {{ $t('sponsor_2') }}
-            <br/>
-            <br/>
-            <h3>{{ $t('sponsor_3') }}</h3>
-            {{ $t('sponsor_4') }}
-            <br/>
-            <br/>
-            <h3>{{ $t('sponsor_5') }}</h3>
-            {{ $t('sponsor_6') }}
-            <br/>
-            {{ $t('sponsor_7') }}
-            <br/>
-            <br/>
-            <img height="300" width="300" src="../../assets/alipay.jpg"/>
-            <img height="300" width="300" src="../../assets/wechat.jpg"/>
-        </Modal>
+
 
     </div>
 
