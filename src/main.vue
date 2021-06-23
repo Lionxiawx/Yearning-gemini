@@ -15,20 +15,7 @@
                 <div class="main-breadcrumb">
                     <breadcrumb-nav></breadcrumb-nav>
                 </div>
-                <div class="header-avator-con">
-                    <Dropdown trigger="click" @on-click="handleClickUserDropdown">
-                        <DropdownMenu slot="list">
-                            <DropdownItem name="sponsor">获取赞助版</DropdownItem>
-                            <DropdownItem><a href="https://guide.yearning.io/"
-                                             target="_Blank">{{ $t('banner.guide') }}</a></DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                    <div @click="lockScreen" class="lock-screen-btn-con" style="margin-left: 5%">
-                        <Tooltip :content="$t('dash.lock')" placement="bottom">
-                            <Icon type="md-lock" :size="20"></Icon>
-                        </Tooltip>
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="single-page-con" style="padding-left:200px">
