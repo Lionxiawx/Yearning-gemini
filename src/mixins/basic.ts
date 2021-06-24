@@ -25,8 +25,6 @@ export default class Basic extends Vue {
     }
 
     get formItem() {
-        modules_order.order.is_pub = 0;
-        modules_order.order.is_del = 0;
         return modules_order.order
     }
 

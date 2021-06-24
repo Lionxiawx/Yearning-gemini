@@ -134,7 +134,7 @@ export default class orderSQLs extends Mixins(FetchMixins) {
             is_dml: this.is_dml
         })
             .then((res: AxiosResponse<Res>) => {
-                this.testResults = res.data.payload;
+                this.testResults = res.data.payload||[];
                 let gen = 0;
                 this.testResults.forEach((vl: { level: number; }) => {
                     if (vl.level !== 0) {
@@ -148,7 +148,13 @@ export default class orderSQLs extends Mixins(FetchMixins) {
 
     commitOrder() {
         let ty = this.is_dml ? 1 : 0
-        let order = {sql: this.order_text, type: ty, real_name: sessionStorage.getItem("real_name")}
+        //let order = {sql: this.order_text, type: ty,is_del: this.yesNo,is_pub: this.yesNo,bug_type: this.bugType, real_name: sessionStorage.getItem("real_name")}
+        let order = {
+            ...modules_order.order,
+            sql: this.order_text,
+            type: ty,
+            real_name: sessionStorage.getItem("real_name")
+        }
         Object.assign(order, this.formItem)
         PostOrder(order)
             .then(() => {
