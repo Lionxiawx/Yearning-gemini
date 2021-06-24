@@ -92,6 +92,21 @@ export default class platform_audit extends Mixins(Basic) {
             render: render.type
         },
         {
+            title: '是否上线',
+            key: 'is_pub',
+            render: render.isPub
+        },
+        {
+            title: '是否删除',
+            key: 'is_del',
+            render: render.isDel
+        },
+        {
+            title: 'bug类型',
+            key: 'bug_type',
+            render: render.bugType
+        },
+        {
             title: '是否备份',
             key: 'backup',
             render: render.backup

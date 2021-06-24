@@ -9,6 +9,12 @@ let render = {
     },
     type: (h: any, params: { row: { type: number }; }) => {
     },
+    isPub: (h: any, params: { row: { is_pub: number }; }) => {
+    },
+    isDel: (h: any, params: { row: { is_del: number }; }) => {
+    },
+    bugType: (h: any, params: { row: { bug_type: number }; }) => {
+    },
     expand: (h: any, params: { row: { sql: string }; }) => {
     },
     sub_sql: (h: any, params: { row: { sql: string }; }) => {
@@ -99,6 +105,60 @@ render.type = (h: any, params: { row: { type: number }; }) => {
     }
     return h('span', {}, text)
 }
+
+render.isPub = (h: any, params: { row: { is_pub: number }; }) => {
+    const row = params.row;
+    let text = ""
+    if (row.is_pub == 1) {
+        text = "是"
+    }else {
+        text = "否"
+    }
+    return h('span', {}, text)
+}
+render.isDel = (h: any, params: { row: { is_del: number }; }) => {
+    const row = params.row;
+    let text = ""
+    if (row.is_del == 1) {
+        text = "是"
+    }else {
+        text = "否"
+    }
+    return h('span', {}, text)
+}
+
+render.bugType = (h: any, params: { row: { bug_type: number }; }) => {
+    const row = params.row;
+    let text = ""
+    if (row.bug_type == 1) {
+        text = "产品原因"
+    }else if(row.bug_type == 2){
+        text = "开发bug"
+    }
+    else if(row.bug_type == 3){
+        text = "服务器问题"
+    }
+    else if(row.bug_type == 4){
+        text = "用户误操作"
+    }
+    else if(row.bug_type == 5){
+        text = "其他团队操作问题"
+    }
+    else if(row.bug_type == 6){
+        text = "历史数据问题"
+    }
+    else if(row.bug_type == 7){
+        text = "上线需求"
+    }
+    else if(row.bug_type == 8){
+        text = "业务方或产品要求"
+    }
+    else {
+        text = "其他问题"
+    }
+    return h('span', {}, text)
+}
+
 
 render.expand = (h: any, params: { row: { sql: string } }) => {
     return h(expandRow, {

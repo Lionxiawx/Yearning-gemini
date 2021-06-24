@@ -10,7 +10,9 @@
                     <Icon type="md-person"></Icon>
                     我的工单
                 </p>
-                <search text="工单说明" @refresh="current_page" is_order></search>
+                <search text="工单说明"   @refresh="current_page" is_order></search>
+
+
                 <Row>
                     <Col span="24">
                         <Table border :columns="columns" :data="table_data" stripe size="small">
@@ -36,7 +38,8 @@
     import {Component, Mixins} from "vue-property-decorator";
     import Basic from "@/mixins/basic";
     import render from "@/interface/render";
-    import search from "@/components/search/search.vue";
+     import search from "@/components/search/search.vue";
+ //   import searchMany from "@/components/search/searchMany.vue";
     import module_init_args from "@/store/modules/init_args";
 
     @Component({components: {search}})
@@ -57,6 +60,21 @@
                 title: '工单类型',
                 key: 'type',
                 render: render.type
+            },
+            {
+                title: '是否上线',
+                key: 'is_pub',
+                render: render.isPub
+            },
+            {
+                title: '是否删除',
+                key: 'is_del',
+                render: render.isDel
+            },
+            {
+                title: 'bug类型',
+                key: 'bug_type',
+                render: render.bugType
             },
             {
                 title: '是否备份',

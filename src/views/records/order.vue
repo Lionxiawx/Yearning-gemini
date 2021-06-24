@@ -43,6 +43,7 @@
     import Basic from "@/mixins/basic";
     import search from "@/components/search/search.vue";
     import module_init_args from "@/store/modules/init_args";
+    import render from "@/interface/render";
     @Component({components: {search}})
     export default class record extends Mixins(Basic) {
       columns = [
@@ -54,6 +55,21 @@
           title: '工单说明',
           key: 'text',
           tooltip: true
+        },
+        {
+          title: '是否上线',
+          key: 'is_pub',
+          render: render.isPub
+        },
+        {
+          title: '是否删除',
+          key: 'is_del',
+          render: render.isDel
+        },
+        {
+          title: 'bug类型',
+          key: 'bug_type',
+          render: render.bugType
         },
         {
           title: '执行时间',

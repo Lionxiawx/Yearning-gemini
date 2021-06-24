@@ -45,6 +45,21 @@
                 sortable: true
             },
             {
+                title: '是否上线',
+                key: 'is_pub',
+                render: render.isPub
+            },
+            {
+                title: '是否删除',
+                key: 'is_del',
+                render: render.isDel
+            },
+            {
+                title: 'bug类型',
+                key: 'bug_type',
+                render: render.bugType
+            },
+            {
                 title: '查询人',
                 key: 'username'
             },

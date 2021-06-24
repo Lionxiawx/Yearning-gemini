@@ -5,6 +5,7 @@ import modules_search from "@/store/modules/search";
 import {AxiosResponse} from "axios";
 import {request} from "@/libs/requests";
 import {FetchCommonGetApis} from "@/apis/commonApis";
+import modules_searchMany from "@/store/modules/searchMany";
 
 @Component({components: {}})
 export default class Basic extends Vue {
@@ -117,6 +118,7 @@ export default class Basic extends Vue {
         picker: [],
         valve: false,
         text: '',
+        is_pub: 0,
         explain: '',
         work_id: '',
         type: 2,
@@ -182,6 +184,19 @@ export default class Basic extends Vue {
         modules_search.post_search_args(this.find)
         this.current_page();
     }
+
+    queryDataMany() {
+        this.find.valve = true;
+        modules_searchMany.post_search_args(this.find)
+        this.current_page();
+    }
+
+    queryCancelMany() {
+        this.find = {} as any
+        modules_searchMany.post_search_args(this.find)
+        this.current_page();
+    }
+
 
     current_page(vl = 1) {
         this.fetch_page(vl, this.url)
