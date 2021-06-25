@@ -118,7 +118,6 @@ export default class Basic extends Vue {
         picker: [],
         valve: false,
         text: '',
-        is_pub: 0,
         explain: '',
         work_id: '',
         type: 2,
@@ -175,6 +174,7 @@ export default class Basic extends Vue {
 
     queryData() {
         this.find.valve = true;
+        console.log("other")
         modules_search.post_search_args(this.find)
         this.current_page();
     }
@@ -187,6 +187,8 @@ export default class Basic extends Vue {
 
     queryDataMany() {
         this.find.valve = true;
+        console.log("basic log");
+        console.log(this.find);
         modules_searchMany.post_search_args(this.find)
         this.current_page();
     }
@@ -200,6 +202,10 @@ export default class Basic extends Vue {
 
     current_page(vl = 1) {
         this.fetch_page(vl, this.url)
+    }
+
+    current_pageMany(vl = 1) {
+        this.fetch_pageMany(vl, this.url)
     }
 
     setCompletions(editor: any, session: any, pos: any, prefix: any, callback: (arg0: null, arg1: { caption: any; value: any; meta: any; }[]) => void) {
@@ -235,6 +241,28 @@ export default class Basic extends Vue {
         request.put(url, {
             page: vl,
             find: modules_search.find
+        })
+            .then((res: AxiosResponse<Res>) => {
+                // 通用fetch
+                this.table_data = res.data.payload.data;
+                this.page_number = res.data.payload.page;
+                // 权限组fetch
+                this.connectionList.connection = res.data.payload.source.map((vl: { source: string; }) => vl.source);
+                this.connectionList.query = res.data.payload.query.map((vl: { source: string; }) => vl.source);
+                this.connectionList.person = res.data.payload.auditor.map((vl: { username: string; }) => vl.username);
+                // 用户
+                this.connectionList.multi = res.data.payload.multi;
+            })
+    }
+
+    fetch_pageMany(vl: number, url: string) {
+
+        console.log("BBBBBBBB");
+        console.log(modules_searchMany.find);
+
+        request.put(url, {
+            page: vl,
+            find: modules_searchMany.find
         })
             .then((res: AxiosResponse<Res>) => {
                 // 通用fetch

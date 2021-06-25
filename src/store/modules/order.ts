@@ -21,17 +21,17 @@ class order_local extends VuexModule {
     sql_order: order = {
         export: 0,
     }
-    yes_no = [{label:"是",value:1},{label:"否",value:0}]
+    yes_no = [{label:"是",value:"1"},{label:"否",value:"0"}]
     bug_type = [{
-        label:"产品原因",value:1},
-        {label:"开发bug",value:2},
-        {label:"服务器问题",value:3},
-        {label:"用户误操作",value:4},
-        {label:"其他团队操作问题",value:5},
-        {label:"历史数据问题",value:6},
-        {label:"上线需求",value:7},
-        {label:"业务方或产品要求",value:8},
-        {label:"其他问题",value:9}
+        label:"产品原因",value:"1"},
+        {label:"开发bug",value:"2"},
+        {label:"服务器问题",value:"3"},
+        {label:"用户误操作",value:"4"},
+        {label:"其他团队操作问题",value:"5"},
+        {label:"历史数据问题",value:"6"},
+        {label:"上线需求",value:"7"},
+        {label:"业务方或产品要求",value:"8"},
+        {label:"其他问题",value:"9"}
         ]
     order: order = {
         tp: 0,
@@ -44,10 +44,7 @@ class order_local extends VuexModule {
         assigned: '',
         backup: 1,
         export: 0,
-        uuid: '',
-        bug_type: 0,
-        is_pub: 0,
-        is_del: 0
+        uuid: ''
     }
     always: object = {
         one: true,

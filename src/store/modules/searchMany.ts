@@ -6,7 +6,6 @@ export interface Finder {
     valve: boolean
     text: string
     explain: string
-    is_pub: number
     work_id: string
     type: number,
     status: number
@@ -20,7 +19,6 @@ class searchMany extends VuexModule {
         valve: false,
         text: '',
         explain: '',
-        is_pub: 0,
         work_id: '',
         type: 2,
         status: 7
@@ -29,6 +27,8 @@ class searchMany extends VuexModule {
     @Mutation
     post_search_args(vm: Finder) {
         this.find = vm
+        console.log("AAAAAAAAAA")
+        console.log(this.find)
     }
 }
 

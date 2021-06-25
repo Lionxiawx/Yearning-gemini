@@ -10,7 +10,7 @@
                     <Icon type="md-person"></Icon>
                     我的工单
                 </p>
-                <search text="工单说明"   @refresh="current_page" is_order></search>
+                <searchMany text="工单说明"   @refresh="current_pageMany" is_order></searchMany>
 
 
                 <Row>
@@ -27,7 +27,7 @@
                     </Col>
                 </Row>
                 <br>
-                <Page :total="page_number" show-elevator @on-change="current_page" :page-size="20"
+                <Page :total="page_number" show-elevator @on-change="current_pageMany" :page-size="20"
                       :current.sync="current"></Page>
             </Card>
         </Row>
@@ -38,11 +38,11 @@
     import {Component, Mixins} from "vue-property-decorator";
     import Basic from "@/mixins/basic";
     import render from "@/interface/render";
-     import search from "@/components/search/search.vue";
- //   import searchMany from "@/components/search/searchMany.vue";
+     // import search from "@/components/search/search.vue";
+   import searchMany from "@/components/search/searchMany.vue";
     import module_init_args from "@/store/modules/init_args";
 
-    @Component({components: {search}})
+    @Component({components: {searchMany}})
     export default class my_order extends Mixins(Basic) {
 
         columns = [
@@ -119,7 +119,7 @@
         }
 
         mounted() {
-            this.current_page()
+            this.current_pageMany()
         }
     }
 </script>

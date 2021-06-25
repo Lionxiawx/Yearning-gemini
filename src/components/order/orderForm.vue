@@ -103,8 +103,8 @@
             let is_validate: any = this.$refs['formItem'];
             is_validate.validate((valid: boolean) => {
                 if (valid) {
-                    modules_order.beforeAdd(modules_order.order.is_pub==0?"非上线":"上线");
-                    modules_order.beforeAdd(modules_order.order.is_del==0?"非删除":"删除");
+                    //modules_order.beforeAdd(modules_order.order.is_pub==0?"非上线":"上线");
+                    //modules_order.beforeAdd(modules_order.order.is_del==0?"非删除":"删除");
                     modules_order.changed_always({one: false, two: true, three: false})
                     modules_order.changed_step(1)
                 } else {

@@ -22,9 +22,9 @@ interface order {
     uuid?: string
     relevant?: string[]
     sql?: string
-    is_pub?:number
-    is_del?:number
-    bug_type?:number
+    is_pub?:string
+    is_del?:string
+    bug_type?:string
     ;
 
 }
