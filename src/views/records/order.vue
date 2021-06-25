@@ -6,7 +6,7 @@
           <Icon type="md-send"></Icon>
           历史工单执行记录
         </p>
-        <search text="工单编号" @refresh="current_page"></search>
+        <searchMany text="工单编号" @refresh="current_pageMany"></searchMany>
         <Row>
           <Col span="24">
             <Table
@@ -28,7 +28,7 @@
             <Page
                     :total="page_number"
                     show-elevator
-                    @on-change="current_page"
+                    @on-change="current_pageMany"
                     :page-size="20"
                     :current.sync="current"
             ></Page>
@@ -41,10 +41,11 @@
 <script lang="ts">
     import {Component, Mixins} from "vue-property-decorator";
     import Basic from "@/mixins/basic";
-    import search from "@/components/search/search.vue";
+    //import search from "@/components/search/search.vue";
+    import searchMany from "@/components/search/searchMany.vue";
     import module_init_args from "@/store/modules/init_args";
     import render from "@/interface/render";
-    @Component({components: {search}})
+    @Component({components: {searchMany}})
     export default class record extends Mixins(Basic) {
       columns = [
         {
@@ -121,7 +122,7 @@
       }
 
       mounted() {
-        this.current_page()
+        this.current_pageMany()
       }
     }
 </script>

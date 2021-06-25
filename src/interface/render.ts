@@ -153,8 +153,11 @@ render.bugType = (h: any, params: { row: { bug_type: number }; }) => {
     else if(row.bug_type == 8){
         text = "业务方或产品要求"
     }
-    else {
+    else if(row.bug_type == 9){
         text = "其他问题"
+    }
+    else {
+        text = ""
     }
     return h('span', {}, text)
 }

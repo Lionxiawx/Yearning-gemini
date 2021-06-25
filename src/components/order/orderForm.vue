@@ -30,7 +30,7 @@
                         </Select>
                     </FormItem>
                     <FormItem label="上线:" prop="is_pub" required>
-                        <Select v-model="formItem.is_pub"  >
+                        <Select v-model="formItem.is_pub"   @on-change='getPubValue' >
                             <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
@@ -39,7 +39,7 @@
                             <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
-                    <FormItem label="bug类型:" prop="bug_type" >
+                    <FormItem label="bug类型:" prop="bug_type" v-show="get_bug_type_dml">
                         <Select v-model="formItem.bug_type" >
                             <Option v-for="item in bugType" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
@@ -95,7 +95,6 @@
         jwt = sessionStorage.getItem('jwt')
 
         clearForm() {
-            console.log("clear");
             modules_order.clear_order()
         }
 
@@ -117,10 +116,16 @@
             modules_order.changed_is_dml(vl === 1)
         }
 
+        getPubValue(vl: string){
+            modules_order.changed_bug_type_dml(vl=='0')
+        }
+
         mounted() {
             modules_order.clear_order()
             this.fetchIDC();
         }
+
+
     }
 </script>
 

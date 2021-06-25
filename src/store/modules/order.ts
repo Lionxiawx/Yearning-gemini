@@ -17,6 +17,7 @@ interface SQLTest {
 class order_local extends VuexModule {
     steps: number = 0
     is_dml: boolean = false
+    bug_type_dml: boolean = true
     sql: string = ''
     sql_order: order = {
         export: 0,
@@ -117,6 +118,11 @@ class order_local extends VuexModule {
     @Mutation
     changed_is_dml(vm: boolean) {
         this.is_dml = vm
+    }
+
+    @Mutation
+    changed_bug_type_dml(vm: boolean) {
+        this.bug_type_dml = vm
     }
 
 

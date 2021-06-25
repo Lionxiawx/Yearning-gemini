@@ -18,7 +18,7 @@
                                 </Poptip>
                             </FormItem>
                         </Form>
-                        <search text="工单说明" @refresh="current_page" is_order></search>
+                        <searchMany text="工单说明" @refresh="current_pageMany" is_order></searchMany>
                         <Table border :columns="columns" :data="table_data" stripe>
                             <template slot-scope="{ row }" slot="action">
                                 <div>
@@ -50,7 +50,7 @@
                             </template>
                         </Table>
                         <br>
-                        <Page :total="page_number" show-elevator @on-change="current_page" :page-size="20"
+                        <Page :total="page_number" show-elevator @on-change="current_pageMany" :page-size="20"
                               :current.sync="current"></Page>
                     </Col>
                 </Row>
@@ -61,7 +61,8 @@
 </template>
 <script lang="ts">
 import {Component, Mixins} from "vue-property-decorator";
-import search from "@/components/search/search.vue";
+//import search from "@/components/search/search.vue";
+import searchMany from "@/components/search/searchMany.vue";
 import profile from "@/components/profile/testing.vue";
 import osc from "@/views/audit/order/osc.vue";
 import reject from "@/views/audit/order/reject.vue";
@@ -71,7 +72,7 @@ import modules_order from "@/store/modules/order";
 import module_init_args from "@/store/modules/init_args";
 import Basic from "@/mixins/basic";
 
-@Component({components: {search, profile, osc, reject}})
+@Component({components: {searchMany, profile, osc, reject}})
 export default class platform_audit extends Mixins(Basic) {
     columns = [
         {
@@ -159,7 +160,7 @@ export default class platform_audit extends Mixins(Basic) {
     delayKill(vl: { work_id: string }) {
         AuditKillOrder({work_id: vl.work_id})
             .then(() => {
-                this.current_page()
+                this.current_pageMany()
             })
     }
 
@@ -182,7 +183,7 @@ export default class platform_audit extends Mixins(Basic) {
         if (vl) {
             let vm = this;
             this.reboot = setInterval(function () {
-                vm.current_page(vm.current);
+                vm.current_pageMany(vm.current);
             }, 5000)
         } else {
             clearInterval(this.reboot)
@@ -190,7 +191,7 @@ export default class platform_audit extends Mixins(Basic) {
     }
 
     mounted() {
-        this.current_page();
+        this.current_pageMany();
         this.refreshForm(this.valve)
     }
 

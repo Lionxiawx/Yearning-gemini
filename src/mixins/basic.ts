@@ -52,6 +52,10 @@ export default class Basic extends Vue {
         return modules_order.sql_order
     }
 
+    get get_bug_type_dml() {
+        return modules_order.bug_type_dml
+    }
+
     // 通用
 
     ruleValidate = {
@@ -174,7 +178,6 @@ export default class Basic extends Vue {
 
     queryData() {
         this.find.valve = true;
-        console.log("other")
         modules_search.post_search_args(this.find)
         this.current_page();
     }
@@ -187,8 +190,6 @@ export default class Basic extends Vue {
 
     queryDataMany() {
         this.find.valve = true;
-        console.log("basic log");
-        console.log(this.find);
         modules_searchMany.post_search_args(this.find)
         this.current_page();
     }
@@ -256,10 +257,6 @@ export default class Basic extends Vue {
     }
 
     fetch_pageMany(vl: number, url: string) {
-
-        console.log("BBBBBBBB");
-        console.log(modules_searchMany.find);
-
         request.put(url, {
             page: vl,
             find: modules_searchMany.find

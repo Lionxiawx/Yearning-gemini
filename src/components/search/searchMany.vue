@@ -20,7 +20,7 @@
                 <Option  :value="'0'" :key="0" >否</Option>
             </Select>
         </FormItem>
-        <FormItem label="bug类型:" prop="bug_type" :label-width="100">
+        <FormItem label="bug类型:" prop="bug_type" :label-width="100" >
             <Select v-model="find.bug_type" placeholder="请选择" @on-change="queryDataMany" filterable clearable>
                 <Option  :value="'1'" :key="1" >产品原因</Option>
                 <Option  :value="'2'" :key="2" >开发bug</Option>

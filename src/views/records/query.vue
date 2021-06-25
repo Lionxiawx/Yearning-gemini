@@ -12,7 +12,7 @@
                 </p>
                 <Row>
                     <Col span="24">
-                        <search text="工单编号" @refresh="current_page"></search>
+                        <searchMany text="工单编号" @refresh="current_pageMany"></searchMany>
                         <Button type="warning" @click="query_empty" class="margin-left-10" size="small">删除空查询记录</Button>
                         <br>
                         <br>
@@ -24,7 +24,7 @@
                     </Col>
                 </Row>
                 <br>
-                <Page :total="page_number" show-elevator @on-change="current_page" :page-size="20"></Page>
+                <Page :total="page_number" show-elevator @on-change="current_pageMany" :page-size="20"></Page>
             </Card>
         </Row>
     </div>
@@ -32,11 +32,12 @@
 <script lang="ts">
     import {Component, Mixins} from "vue-property-decorator";
     import Basic from "@/mixins/basic";
-    import search from "@/components/search/search.vue";
+    //import search from "@/components/search/search.vue";
+    import searchMany from "@/components/search/searchMany.vue";
     import render from "@/interface/render";
     import {DeleteEmptyAuditQuery} from "@/apis/queryApis";
 
-    @Component({components: {search}})
+    @Component({components: {searchMany}})
     export default class query_record extends Mixins(Basic) {
         columns = [
             {
@@ -103,12 +104,12 @@
         query_empty() {
             DeleteEmptyAuditQuery()
                 .then(() => {
-                    this.current_page()
+                    this.current_pageMany()
                 })
         }
 
         mounted() {
-            this.current_page();
+            this.current_pageMany();
         }
     }
 </script>
