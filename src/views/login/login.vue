@@ -47,6 +47,14 @@
     .div-a {
         position: absolute;
         width: 100%;
+
+        .login-form-box{
+            width: 100%;
+            height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 </style>
 
@@ -64,36 +72,32 @@
             </Row>
         </div>
         <div style="z-index: 100" class="div-a">
-            <Row type="flex">
-                <Col span="3" offset="2">
-                    <div style="margin:180px 560px 0 ;;width: 300px;">
-                        <Form label-position="right">
-                            <FormItem>
-                                <img src="../../assets/wyytlogo.png" width="80px" align="center">
-                            </FormItem>
-                            <form-item>
-                                <span style="font-size: 50px;color: #2b85e4">数据管理平台</span>
-                            </form-item>
-                            <FormItem>
-                                <Input style="opacity: 0.6" :placeholder="$t('account')"
-                                       v-model="formInline.user"></Input>
-                            </FormItem>
-                            <FormItem>
-                                <Input style="opacity: 0.6" :placeholder="$t('password')" v-model="formInline.password"
-                                       type="password"></Input>
-                            </FormItem>
+            <div class="login-form-box">
+                <Form label-position="right">
+                    <FormItem>
+                        <img src="../../assets/wyytlogo.png" width="80px" align="center">
+                    </FormItem>
+                    <form-item>
+                        <span style="font-size: 50px;color: #2b85e4">数据管理平台</span>
+                    </form-item>
+                    <FormItem>
+                        <Input style="opacity: 0.6" :placeholder="$t('account')"
+                               v-model="formInline.user"></Input>
+                    </FormItem>
+                    <FormItem>
+                        <Input style="opacity: 0.6" :placeholder="$t('password')" v-model="formInline.password"
+                               type="password"></Input>
+                    </FormItem>
 
-                            <FormItem>
-                                <Checkbox v-model="is_open"><span style="color: #FFFFFF;">{{ $t('ldap') }}</span>
-                                </Checkbox>
-                            </FormItem>
-                            <FormItem>
-                                <Button long type="primary" ghost @click="signIn"> 登录</Button>
-                            </FormItem>
-                        </Form>
-                    </div>
-                </Col>
-            </Row>
+                    <FormItem>
+                        <Checkbox v-model="is_open"><span style="color: #FFFFFF;">{{ $t('ldap') }}</span>
+                        </Checkbox>
+                    </FormItem>
+                    <FormItem>
+                        <Button long type="primary" ghost @click="signIn"> 登录</Button>
+                    </FormItem>
+                </Form>
+            </div>
         </div>
         <div class="footer">
             <Row type="flex" justify="start" align="bottom" style="z-index: 999">
