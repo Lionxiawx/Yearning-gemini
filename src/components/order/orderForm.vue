@@ -39,8 +39,8 @@
                             <Option v-for="item in yesNo" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
-                    <FormItem label="bug类型:" prop="bug_type" v-show="get_bug_type_dml">
-                        <Select v-model="formItem.bug_type" >
+                    <FormItem label="bug类型:" prop="bug_type" v-show="get_bug_type_dml" >
+                        <Select v-model="formItem.bug_type" clearable>
                             <Option v-for="item in bugType" :value="item.value" :key="item.value" :label="item.label"></Option>
                         </Select>
                     </FormItem>
@@ -100,6 +100,12 @@
 
         nextStep() {
             let is_validate: any = this.$refs['formItem'];
+            if(modules_order.order.is_pub=='0'){
+                if(modules_order.order.bug_type==undefined||modules_order.order.bug_type==''){
+                    this.$Message.warning("请填写bug类型:!")
+                    return
+                }
+            }
             is_validate.validate((valid: boolean) => {
                 if (valid) {
                     //modules_order.beforeAdd(modules_order.order.is_pub==0?"非上线":"上线");
