@@ -149,6 +149,7 @@ export default class Basic extends Vue {
     }
 
     is_open = false;
+    ldap_is_open = true;
 
     edit_password = false;
 

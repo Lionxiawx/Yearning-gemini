@@ -90,7 +90,7 @@
                     </FormItem>
 
                     <FormItem>
-                        <Checkbox v-model="is_open"><span style="color: #FFFFFF;">{{ $t('ldap') }}</span>
+                        <Checkbox v-model="ldap_is_open"><span style="color: #FFFFFF;">{{ $t('ldap') }}</span>
                         </Checkbox>
                     </FormItem>
                     <FormItem>
@@ -280,7 +280,7 @@
                 this.replace = !this.replace;
                 return;
             }
-            LoginApi(this.is_open, {
+            LoginApi(this.ldap_is_open, {
                 username: this.formInline.user,
                 password: this.formInline.password
             })
