@@ -5,6 +5,7 @@
                 <Col span="23">
                     <Button type="text" icon="md-add-circle" @click="openModel">打开数据源</Button>
                     <Button type="text" icon="md-copy" @click="open_snip" class="margin-left-10">新建snippet</Button>
+                    <Button type="text" style="float: right"  icon="md-unlock" @click="deferReply">结束查询</Button>
                     <Tabs type="card" name="source" @on-tab-remove="handleTabRemove" :value="focus">
                         <template v-for="(i,idx) in sourceList">
                             <TabPane :name="i" :label="i" tab="source" :key="i" v-if="idx===0">
@@ -23,7 +24,7 @@
                 <Cell v-for="i in fetchData.source" :title="i" :name="i" :key="i"/>
             </CellGroup>
             <div slot="footer">
-                <Button type="error" @click="deferReply">结束查询</Button>
+
             </div>
         </Modal>
 
@@ -33,6 +34,8 @@
                 <FormItem label="Snippet"><Input v-model="addSnippet.text" type="textarea" :rows="4"></Input></FormItem>
             </Form>
         </Modal>
+
+
     </div>
 </template>
 
